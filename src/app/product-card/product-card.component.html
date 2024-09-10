@@ -1,0 +1,43 @@
+<!-- <a class="link-underline-light" [routerLink]="['/product-detail' , productData.id]"> -->
+    <!-- <a (click)="navigateToDetails(productData.id)"> -->
+
+  <div class="col">
+  <div class="card rounded rounded-5 ">
+    @if(productData.availabilityStatus=='Low Stock'){
+    <span class="badge rounded-pill text-center text-bg-danger fs-6"  style="width:6em;height:1.7em;position: absolute; top: 1em; left: 1.4em;">{{productData.availabilityStatus}}</span>
+    }@else {
+    <span class="badge rounded-pill text-center text-bg-success fs-6"  style="width:6em;height:1.7em;position: absolute; top: 1em; left: 1.4em;">{{productData.availabilityStatus}}</span>
+
+    }
+    <img [src]="productData.thumbnail" class="card-img-top bg-dark rounded rounded-top-5 " [alt]="productData.tags[0]">
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-9">
+      <span class="card-title text-start fs-4 fw-bold ">{{productData.title}}</span>
+
+        </div>
+        <div class="col-3 text-end">
+          <span class="card-text fs-5 fw-normal text-secondary">
+            ${{productData.price}}
+          </span>
+
+        </div>
+      </div>
+      <p class="card-text ">{{productData.description}}</p>
+
+      <div class="row">
+        <div class="col">
+            <app-stars [rating]="productData.rating"></app-stars>
+            </div>
+    <div class="col">
+      <button [routerLink]="['/cart']" (click)="addToCart(productData)" class="btn btn-outline-dark rounded rounded-5 mb-2 ms-1 w-100"> Add to Cart </button>
+</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+    <!-- </a> -->
+
+<!-- </a> -->

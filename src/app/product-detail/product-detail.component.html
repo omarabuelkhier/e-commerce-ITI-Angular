@@ -1,0 +1,42 @@
+  <div class="col">
+    <div class="card rounded rounded-5 ">
+      @if(productDetails.availabilityStatus=='Low Stock'){
+      <span class="badge rounded-pill text-center text-bg-danger fs-6"
+        style="width:6em;height:1.7em;position: absolute; top: 1em; left: 1.4em;">{{productDetails.availabilityStatus}}</span>
+      }@else {
+      <span class="badge rounded-pill text-center text-bg-success fs-6"
+        style="width:6em;height:1.7em;position: absolute; top: 1em; left: 1.4em;">{{productDetails.availabilityStatus}}</span>
+
+      }
+      <img [src]="productDetails.thumbnail" class="card-img-top bg-dark rounded rounded-top-5 "
+        [alt]="productDetails.tags">
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-9">
+            <span class="card-title text-start fs-4 fw-bold ">{{productDetails.title}}</span>
+
+          </div>
+          <div class="col-3 text-end">
+            <span class="card-text fs-5 fw-normal text-secondary">
+              ${{productDetails.price}}
+            </span>
+
+          </div>
+        </div>
+        <p class="card-text ">{{productDetails.description}}</p>
+
+        <div class="row">
+          <div class="col">
+            <app-stars [rating]="productDetails.rating"></app-stars>
+          </div>
+          <div class="col">
+            <a [routerLink]="['/products']" class="btn btn-outline-dark rounded rounded-5 mb-2 ms-1 w-100"> Return Home </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+

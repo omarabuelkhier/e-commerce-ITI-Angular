@@ -1,0 +1,8 @@
+  <h2 class="me-5 fw-bold text-black-50">Welcome to Our Products Website Start Shopping</h2>
+  <div class="row row-cols-1 row-cols-md-3 mt-4 g-4">
+    @for(product of productsList; track product.id){
+    <app-product-card [productData]="product" (sendToParent)="reciveFromChild($event)"></app-product-card>
+
+  }
+
+

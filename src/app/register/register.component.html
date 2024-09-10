@@ -1,0 +1,114 @@
+<div class="container mt-5">
+
+  <!-- Pills content -->
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1 class="text-center fw-bold mb-5">REGISTER</h1>
+    <!-- Name input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <label class="form-label" for="registerName">Name</label>
+      <input type="text" id="registerName" formControlName="name" class="form-control" />
+      @if(name?.invalid && submitted)
+      {
+      <div id="nameErrors" class="text-danger">
+        Name is required.
+      </div>
+
+      }
+    </div>
+
+
+    <!-- Username input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <label class="form-label" for="registerUsername">Username</label>
+      <input type="text" id="registerUsername" class="form-control" formControlName="username" />
+      @if(username?.invalid && submitted)
+      {
+      <div id="username?Errors" class="text-danger">
+
+        @if(username?.hasError('pattern'))
+        {
+        Please provide a valid username with no spaces.
+        }
+        @if(username?.hasError('required'))
+        {
+        username is required.
+        }
+      </div>
+
+      }
+    </div>
+
+    <!-- Email input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <label class="form-label" for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" class="form-control" formControlName="email" />
+      @if(email?.invalid && submitted)
+      {
+      <div id="emailErrors" class="text-danger">
+
+        @if(email?.hasError('pattern'))
+        {
+        Please provide a valid Email.
+        }
+        @if(email?.hasError('required'))
+        {
+        Email is required.
+        }
+      </div>
+
+      }
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="password">Password</label>
+
+      <input type="password" id="password" class="form-control" formControlName="password" required />
+      @if(password?.invalid && submitted)
+      {
+      <div id="emailErrors" class="text-danger">
+        @if(password?.hasError('required')){
+        Password is required.
+        }
+        @if(password?.hasError('pattern'))
+        {
+        Password must consists of at least 8 characters,
+        requires one lower or upper case letter,
+        one digit, 8-20 length, and no spaces.
+        }
+
+      </div>
+      }
+    </div>
+
+    <!-- Repeat Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+
+      <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" />
+
+      @if(confirmPassword?.invalid && submitted)
+      {
+
+      <div id="confirmPasswordErrors" class="text-danger">
+        @if(confirmPassword?.hasError('required') ){
+
+        Password Confirm is required.
+        }
+        @if(registerForm.errors?.['PasswordNoMatch']==true)
+        {
+        Password Confirm must matches Password.
+        }
+
+      </div>
+      }
+    </div>
+    <!-- Submit button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-dark btn-block mb-4 w-75">Register</button>
+    </div>
+    <div class="text-center">
+      <p>Are You Already a member? <a routerLink='/login'>Login</a></p>
+    </div>
+  </form>
+</div>

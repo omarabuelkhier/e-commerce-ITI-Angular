@@ -1,0 +1,61 @@
+<h2 class="me-5 fw-bold text-black-50">Cart</h2>
+<table class="table table-striped  ">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Remove</th>
+      <th scope="col">Price</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody >
+@for(product of cartProducts; track product.id){
+<tr class=" align-content-center">
+
+  <td scope="col"><img width="100px" height="75px" [src]="product.thumbnail" alt=""></td>
+  <td scope="col">{{product.description}}</td>
+  <td scope="col"> <table class=" table-striped-columns table-secondary">
+    <tbody>
+      <tr>
+        <!-- <td> -->
+        <button class="btn btn-dark h-100 py-2 px-3 w-100 bg-dark" (click)="increaseCounter()">+</button>
+
+        <!-- </td> -->
+        <td>
+          <p class="my-0 mx-3 "> {{ cvalue }} </p>
+
+          <!-- <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" /> -->
+        </td>
+
+        <td>
+          <button class="btn  px-3 btn-light " (click)="decreaseCounter()">-</button>
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table></td>
+  <td scope="col"> <button class="btn border link-underline-light text-dark border-2 p-2 m-1 fs-3 fw-light" (click)="handleDeleteProduct(product)" >X</button> </td>
+  <td scope="col">${{product.price}}</td>
+</tr>
+}
+</tbody>
+
+</table>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <button class="btn btn-dark rounded-5 w-25" (click)="navigateToHome()" routerLinkActive="router-link-active" >Checkout</button>
+    </div>
+    <div class="col-3">
+      <span class=" fs-5 fw-bold me-5">Total </span>
+      <!-- <span class="text-end fs-5 fw-light text-secondary ms-5 "> ${{product.price*counterVal}}</span> -->
+
+    </div>
+  </div>
+</div>
+
